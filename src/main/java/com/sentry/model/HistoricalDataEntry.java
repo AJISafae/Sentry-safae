@@ -19,8 +19,8 @@ public class HistoricalDataEntry implements Serializable {
 	@JsonCreator
     public HistoricalDataEntry(@JsonProperty("value") double value, @JsonProperty("timestamp") long timestamp ) {
         this.value= value;
-        this.timestamp = timestamp;
-    }
+		this.timestamp = timestamp;
+	}
 
 	public double getValue() {
 		return value;

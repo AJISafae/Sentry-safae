@@ -51,10 +51,9 @@ public class ProcessorApiImpl implements ProcessorApi {
 				HttpMethod.GET, null, new ParameterizedTypeReference<ProcessorHistoricalDataResponse>() {
 				}, processorId, history);
 
-		List<Double> historicalValues = new ArrayList<>();
 		List<HistoricalDataEntry> historyEntries = response.getBody().getHistory();
 		if (historyEntries == null) {
-			return historicalValues;
+			return new ArrayList<>();
 		}
 
 		return historyEntries.stream().filter(entry -> entry != null).map(entry -> entry.getValue())
