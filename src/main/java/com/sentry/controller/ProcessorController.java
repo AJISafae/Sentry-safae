@@ -27,8 +27,7 @@ public class ProcessorController {
 	 * Endpoint to retrieve maximum processor usage values.
 	 * 
 	 * @param history
-	 * @return An HTTP response containing a list of processors with max
-	 *         values.
+	 * @return An HTTP response containing a list of processors with max values.
 	 */
 	@GetMapping("/CPUprcrProcessorTimePercent/max")
 	public ResponseEntity<List<Processor>> getMaxProcessorValues(@RequestParam("history") int history) {
@@ -36,6 +35,19 @@ public class ProcessorController {
 		List<Processor> maxValues = processorService.getProcessorValues(history, OperationEnum.MAX);
 
 		return ResponseEntity.ok(maxValues);
-	}	
+	}
 
+	/**
+	 * Endpoint to retrieve minimum processor usage values.
+	 * 
+	 * @param history
+	 * @return An HTTP response containing a list of processors with min values.
+	 */
+	@GetMapping("/CPUprcrProcessorTimePercent/min")
+	public ResponseEntity<List<Processor>> getMinProcessorValues(@RequestParam("history") int history) {
+
+		List<Processor> minValues = processorService.getProcessorValues(history, OperationEnum.MIN);
+
+		return ResponseEntity.ok(minValues);
+	}
 }

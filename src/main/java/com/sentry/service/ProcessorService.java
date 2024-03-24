@@ -11,11 +11,11 @@ import com.sentry.utilities.OperationEnum;
 public interface ProcessorService {
 
 	/**
-	 *  Retrieves the max values for each processor.
+	 *  Retrieves the max or min values for each processor.
 	 *
 	 * @param history
-	 * @param operation The type of operation max.
-	 * @return A list of max values for each processor.
+	 * @param operation The type of operation max or min.
+	 * @return A list of max or min values for each processor.
 	 */
 	public List<Processor> getProcessorValues(int history, OperationEnum operation);
 

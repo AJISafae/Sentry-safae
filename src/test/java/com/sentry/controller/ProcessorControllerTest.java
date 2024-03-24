@@ -41,6 +41,22 @@ public class ProcessorControllerTest {
 
 	    assertEquals(expectedValues, responseEntity.getBody());
 	}
+	
+	@Test
+	public void testGetMinProcessorValues() {
+	    int history = 20;
+
+	    List<Processor> expectedValues = new ArrayList<>();
+	    expectedValues.add(new Processor("CPU_01", 90.0));
+	    expectedValues.add(new Processor("CPU_02", 40.0));
+	    expectedValues.add(new Processor("CPU_03", 80.0));
+
+	    when(processorService.getProcessorValues(history, OperationEnum.MIN)).thenReturn(expectedValues);
+
+	    ResponseEntity<List<Processor>> responseEntity = processorController.getMinProcessorValues(history);
+
+	    assertEquals(expectedValues, responseEntity.getBody());
+	}
 
 
 }

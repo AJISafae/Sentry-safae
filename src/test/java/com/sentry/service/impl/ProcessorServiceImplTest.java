@@ -17,7 +17,6 @@ import org.mockito.MockitoAnnotations;
 
 import com.sentry.api.ProcessorApi;
 import com.sentry.model.Processor;
-import com.sentry.service.impl.ProcessorServiceImpl;
 import com.sentry.utilities.OperationEnum;
 
 public class ProcessorServiceImplTest {
@@ -46,10 +45,16 @@ public class ProcessorServiceImplTest {
 		assertEquals(3, resultMax.size());
 		assertEquals("Processor-01", resultMax.get(0).getName());
 		assertEquals(70.0, resultMax.get(0).getValue());
+
+		List<Processor> resultMin = processorService.getProcessorValues(10, OperationEnum.MIN);
+
+		assertEquals(3, resultMin.size());
+		assertEquals("Processor-01", resultMin.get(0).getName());
+		assertEquals(50.0, resultMin.get(0).getValue());
 	}
 
 	@Test
-	public void testGetOperationProcessorValuesWithEmptyData() {
+	public void testGetProcessorValuesWithEmptyData() {
 		List<String> processors = Collections.emptyList();
 
 		when(processorApi.getAllProcessors()).thenReturn(processors);
@@ -57,6 +62,10 @@ public class ProcessorServiceImplTest {
 		List<Processor> result = processorService.getProcessorValues(10, OperationEnum.MAX);
 
 		assertEquals(0, result.size());
+
+		List<Processor> result2 = processorService.getProcessorValues(10, OperationEnum.MIN);
+
+		assertEquals(0, result2.size());
 	}
 
 }
