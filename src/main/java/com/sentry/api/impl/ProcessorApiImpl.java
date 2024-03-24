@@ -53,7 +53,7 @@ public class ProcessorApiImpl implements ProcessorApi {
 
 		List<HistoricalDataEntry> historyEntries = response.getBody().getHistory();
 		if (historyEntries == null) {
-			return new ArrayList<>();
+			return Collections.emptyList();
 		}
 
 		return historyEntries.stream().filter(entry -> entry != null).map(entry -> entry.getValue())

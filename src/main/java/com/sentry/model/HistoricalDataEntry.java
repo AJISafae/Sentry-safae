@@ -15,10 +15,10 @@ public class HistoricalDataEntry implements Serializable {
 	public HistoricalDataEntry(Double value) {
 		this.value = value;
 	}
-	
+
 	@JsonCreator
-    public HistoricalDataEntry(@JsonProperty("value") double value, @JsonProperty("timestamp") long timestamp ) {
-        this.value= value;
+	public HistoricalDataEntry(@JsonProperty("value") double value, @JsonProperty("timestamp") long timestamp) {
+		this.value = value;
 		this.timestamp = timestamp;
 	}
 
