@@ -51,6 +51,11 @@ public class ProcessorServiceImplTest {
 		assertEquals(3, resultMin.size());
 		assertEquals("Processor-01", resultMin.get(0).getName());
 		assertEquals(50.0, resultMin.get(0).getValue());
+		
+		List<Processor> resultAvg = processorService.getProcessorValues(10, OperationEnum.AVG);
+		assertEquals("Processor-01", resultAvg.get(0).getName());
+		assertEquals(60.0, resultAvg.get(1).getValue());
+
 	}
 
 	@Test

@@ -50,4 +50,18 @@ public class ProcessorController {
 
 		return ResponseEntity.ok(minValues);
 	}
+
+	/**
+	 * Endpoint to retrieve average processor usage values.
+	 * 
+	 * @param history
+	 * @return An HTTP response containing a list of processors with average values.
+	 */
+	@GetMapping("/CPUprcrProcessorTimePercent/avg")
+	public ResponseEntity<List<Processor>> getAvgProcessorValues(@RequestParam("history") int history) {
+
+		List<Processor> avgValues = processorService.getProcessorValues(history, OperationEnum.AVG);
+
+		return ResponseEntity.ok(avgValues);
+	}
 }
